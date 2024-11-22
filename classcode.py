@@ -1,3 +1,5 @@
 import classdef 
 gaga=classdef.gagadenvyou('yeye',18)
-print(gaga.name)
+if __name__=="__main__":
+    print(gaga)
+    print(gaga.name)
