@@ -1,10 +1,8 @@
-print(11)
-print(22)
-print("gg")
-print('second')
-<<<<<<< HEAD
-print('third')
-print('forth')
-=======
-print('third')
->>>>>>> refs/remotes/pythonlearning/master
+class gagadenvyou:
+    def __init__(self,name,age):
+        self.name= name 
+        self.age = age 
+    def __str__(self):
+        return f"{self.name},{self.age}"
+b=gagadenvyou('yeye',18)
+print(b.name)
