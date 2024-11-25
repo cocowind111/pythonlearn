@@ -1,9 +1,72 @@
 第一天学习
 一、文件名classdef.py
 1.定义gagadenvyou类
+    Class 类名：
 2.创建类方法
+    Class 类名：
+        def 方法名：
 3.if __name__=="__main__":
     print(yy.name)
 #只有这个py文件作为主程序执行时，才会调用这个if语句下面的代码。如果是模块被调用的话则不会执行。
 二、文件名classcode.py
 1.从外部程序中调用定义的类
+
+第二天学习
+一、文件名：classimport
+import 模块名（文件名去掉.py）
+    import classdef
+a=classdef.方法名（）
+from 模块名 import 方法名
+    from classdef import gagadenvyou
+    b=方法名（）
+二、文件名：classdef
+1.类的实例化是指创建一个类对象
+    yy= gagadenvyou('yeye',18)
+2.__init__方法
+在类实例化时会自动调用的方法。
+    def __init__(self):
+        self.data=guigui
+__init__方法也可以设置参数
+    def __init__(self,name,age):
+        self.name=name
+        self.age=age
+3.类变量、实例变量、局部变量
+类变量/类属性：类体内，所有函数之外
+实例变量/实例属性：所有函数内部，以“self.变量名”
+局部变量：所有函数内部，以“变量名=变量值”
+
+3.1类变量
+类变量可通过类名调用和修改，通过类对象只能调用不能修改。通过类名修改类变量，会作用到所有的实例对象上。
+
+    class variable:
+        name="a"
+print(variable.name)
+classvariable=variable()
+print(classvariable.name)
+注意，通过类对象是无法修改类变量的。通过类对象对类变量赋值，其本质将不再是修改类变量的值，而是在给该
+对象定义新的实例变量。
+
+3.2实例变量
+实例变量只能通过类对象进行访问，无法通过类名访问。
+    class variable:
+        def shilivar(self):
+            self.shili="shilivariable"
+        def __init__(self):
+            self.value=18
+b=variable()
+print(b.value)
+c=b.shilivar()
+print(c.shili)
+修改实例变量的值，不会影响类的其他实例化对象，也不会影响同名的类变量。
+
+3.3局部变量
+在类方法中直接以“变量名=值”进行定义的变量
+    class variable:       
+        def jubuvar(self,jubu):
+            money=jubu*100
+            print(money)
+    b=variable()
+    c=b.jubuvar(0.1)
+    print(c)
+
+
