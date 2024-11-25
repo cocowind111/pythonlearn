@@ -6,5 +6,6 @@ class gagadenvyou:
         return f"{self.name},{self.age}"
 print("hello")
 print(__name__)
+yy=gagadenvyou('yeye',18)
 if __name__=="__main__":
-    print(gagadenvyou)
+    print(yy.name)

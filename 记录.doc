@@ -1,0 +1,9 @@
+第一天学习
+一、文件名classdef.py
+1.定义gagadenvyou类
+2.创建类方法
+3.if __name__=="__main__":
+    print(yy.name)
+#只有这个py文件作为主程序执行时，才会调用这个if语句下面的代码。如果是模块被调用的话则不会执行。
+二、文件名classcode.py
+1.从外部程序中调用定义的类
