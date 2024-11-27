@@ -69,4 +69,49 @@ print(c.shili)
     c=b.jubuvar(0.1)
     print(c)
 
+第三天学习
+一、main函数
+最好是在每个python文件中都写一个main函数，当其直接运行时，可以执行main中的代码。
+二、Class的继承，子类，父类（文件名classfatherson）
+1.定义如果你要编写的类是另一个现成类的特殊版本，可使用 继承。一个类继承另一个类时，
+它将自动获得另一个类的所有属性和方法;原有的类称为父类，而新类称为子类。
+子类继承了其父类的所有属性和方法，同时还可以定义自己的属性和方法。
+在定义好父类后，需要在子类中添加super()方法将父类和子类连接起来。
+class gagadelaopo(gagadenvyou):
+    def __init__(self,name,age):
+        super().__init__(name,age)
+        self.yeyebaby='littleyeye'
+    def baby(self):
+        print(str(self.yeyebaby))
+    
+gagadelaopo 就是 gaga的nvyou的子类。
+通过super().__init__(name,age)调用父类的构造函数，初始化父类的属性。这样就完成了子类对父类的继承。
+可以像定义类方法和实例变量一样，定义子类中独有的属性或者方法。比如self.yeyebaby 和baby方法等。
+也可在子类中对于父类中已有的同名方法进行改写,如下所示:
+class gagadenvyou:
+    def __init__(self,name,age):
+        self.name= name 
+        self.age = age 
+    def __str__(self):
+        return f"{self.name},{self.age}"
+    def sense2gaga(self):
+        print("gagadenvyou")
+
+class gagadelaopo(gagadenvyou):
+    def __init__(self,name,age):
+        super().__init__(name,age)
+        self.yeyebaby='littleyeye'
+    def baby(self):
+        print(str(self.yeyebaby))
+    def sense2gaga(self):
+        print("gagadelaopo")
+调用子类的sense2gaga时，会输出子类中sense2gaga的值，即gagadelaopo。
+
+三、调用方法时，即使方法不需要输入变量,函数名后面也要加()。
+比如对于类方法baby，
+yeye.baby()
+
+第四天学习：
+
+一、实例方法、类方法、静态方法。
 

@@ -7,5 +7,7 @@ class gagadenvyou:
 print("hello")
 print(__name__)
 yy=gagadenvyou('yeye',18)
-if __name__=="__main__":
+def main(yy):
     print(yy.name)
+if __name__=="__main__":
+    main(yy)
