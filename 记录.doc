@@ -114,4 +114,34 @@ yeye.baby()
 第四天学习：
 
 一、实例方法、类方法、静态方法。
-
+1.实例方法：定义在类中，只能通过类的实例对象调用，第一个参数通常是self。
+实例.方法()
+    def __str__(self):#实例方法
+        return f"{self.name},{self.age}"
+obj=gagadenvyou('yeyepig','18')#实例.方法()调用
+2.类方法：作用于类本身的方法。用@classmethod装饰器进行定义，并且第一个参数是cls，代表调用该方法的类本身。
+调用方式为实例.方法()或类.方法()。
+class gagadenvyou:
+    class_attribute='person'
+    @classmethod
+    def classmethodtest(cls):#类方法
+        print(cls.class_attribute)
+print(gagadenvyou.classmethodtest)#类.方法()调用
+print(obj.classmethodtest)#实例.方法()调用
+3.静态方法：使用@staticmethod装饰器进行定义，与类或实例没有直接关系，所以没有self或cls参数。
+通常是一些与类相关的使用工具或方法，不需要访问或修改类的状态。与正常方法的定义差不多。
+调用方式为实例.方法()或类.方法()。
+    @staticmethod
+    def staticmethod(a,b):#静态方法
+        return a+b
+c=gagadenvyou.staticmethod(1,2)#类.方法()调用
+d=obj.staticmethod(1,2)#实例.方法()调用
+备注：类方法和静态方法都需要用装饰器进行定义即在类方法前加上@classmethod 在静态方法前加上@staticmethod
+二、利用f字符串的用法。
+一般语法
+f'xxxx{}xxxx'
+{}中是变量，在运行时可以直接将变量的值插入到字符串中。
+a=1
+print(f'a的值为{a}')
+输出结果：
+a的值为1
