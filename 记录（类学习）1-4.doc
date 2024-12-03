@@ -1,0 +1,147 @@
+第一天学习
+一、文件名classdef.py
+1.定义gagadenvyou类
+    Class 类名：
+2.创建类方法
+    Class 类名：
+        def 方法名：
+3.if __name__=="__main__":
+    print(yy.name)
+#只有这个py文件作为主程序执行时，才会调用这个if语句下面的代码。如果是模块被调用的话则不会执行。
+二、文件名classcode.py
+1.从外部程序中调用定义的类
+
+第二天学习
+一、文件名：classimport
+import 模块名（文件名去掉.py）
+    import classdef
+a=classdef.方法名（）
+from 模块名 import 方法名
+    from classdef import gagadenvyou
+    b=方法名（）
+二、文件名：classdef
+1.类的实例化是指创建一个类对象
+    yy= gagadenvyou('yeye',18)
+2.__init__方法
+在类实例化时会自动调用的方法。
+    def __init__(self):
+        self.data=guigui
+__init__方法也可以设置参数
+    def __init__(self,name,age):
+        self.name=name
+        self.age=age
+3.类变量、实例变量、局部变量
+类变量/类属性：类体内，所有函数之外
+实例变量/实例属性：所有函数内部，以“self.变量名”
+局部变量：所有函数内部，以“变量名=变量值”
+
+3.1类变量
+类变量可通过类名调用和修改，通过类对象只能调用不能修改。通过类名修改类变量，会作用到所有的实例对象上。
+
+    class variable:
+        name="a"
+print(variable.name)
+classvariable=variable()
+print(classvariable.name)
+注意，通过类对象是无法修改类变量的。通过类对象对类变量赋值，其本质将不再是修改类变量的值，而是在给该
+对象定义新的实例变量。
+
+3.2实例变量
+实例变量只能通过类对象进行访问，无法通过类名访问。
+    class variable:
+        def shilivar(self):
+            self.shili="shilivariable"
+        def __init__(self):
+            self.value=18
+b=variable()
+print(b.value)
+c=b.shilivar()
+print(c.shili)
+修改实例变量的值，不会影响类的其他实例化对象，也不会影响同名的类变量。
+
+3.3局部变量
+在类方法中直接以“变量名=值”进行定义的变量
+    class variable:       
+        def jubuvar(self,jubu):
+            money=jubu*100
+            print(money)
+    b=variable()
+    c=b.jubuvar(0.1)
+    print(c)
+
+第三天学习
+一、main函数
+最好是在每个python文件中都写一个main函数，当其直接运行时，可以执行main中的代码。
+二、Class的继承，子类，父类（文件名classfatherson）
+1.定义如果你要编写的类是另一个现成类的特殊版本，可使用 继承。一个类继承另一个类时，
+它将自动获得另一个类的所有属性和方法;原有的类称为父类，而新类称为子类。
+子类继承了其父类的所有属性和方法，同时还可以定义自己的属性和方法。
+在定义好父类后，需要在子类中添加super()方法将父类和子类连接起来。
+class gagadelaopo(gagadenvyou):
+    def __init__(self,name,age):
+        super().__init__(name,age)
+        self.yeyebaby='littleyeye'
+    def baby(self):
+        print(str(self.yeyebaby))
+    
+gagadelaopo 就是 gaga的nvyou的子类。
+通过super().__init__(name,age)调用父类的构造函数，初始化父类的属性。这样就完成了子类对父类的继承。
+可以像定义类方法和实例变量一样，定义子类中独有的属性或者方法。比如self.yeyebaby 和baby方法等。
+也可在子类中对于父类中已有的同名方法进行改写,如下所示:
+class gagadenvyou:
+    def __init__(self,name,age):
+        self.name= name 
+        self.age = age 
+    def __str__(self):
+        return f"{self.name},{self.age}"
+    def sense2gaga(self):
+        print("gagadenvyou")
+
+class gagadelaopo(gagadenvyou):
+    def __init__(self,name,age):
+        super().__init__(name,age)
+        self.yeyebaby='littleyeye'
+    def baby(self):
+        print(str(self.yeyebaby))
+    def sense2gaga(self):
+        print("gagadelaopo")
+调用子类的sense2gaga时，会输出子类中sense2gaga的值，即gagadelaopo。
+
+三、调用方法时，即使方法不需要输入变量,函数名后面也要加()。
+比如对于类方法baby，
+yeye.baby()
+
+第四天学习：
+
+一、实例方法、类方法、静态方法。
+1.实例方法：定义在类中，只能通过类的实例对象调用，第一个参数通常是self。
+实例.方法()
+    def __str__(self):#实例方法
+        return f"{self.name},{self.age}"
+obj=gagadenvyou('yeyepig','18')#实例.方法()调用
+2.类方法：作用于类本身的方法。用@classmethod装饰器进行定义，并且第一个参数是cls，代表调用该方法的类本身。
+调用方式为实例.方法()或类.方法()。
+class gagadenvyou:
+    class_attribute='person'
+    @classmethod
+    def classmethodtest(cls):#类方法
+        print(cls.class_attribute)
+print(gagadenvyou.classmethodtest)#类.方法()调用
+print(obj.classmethodtest)#实例.方法()调用
+3.静态方法：使用@staticmethod装饰器进行定义，与类或实例没有直接关系，所以没有self或cls参数。
+通常是一些与类相关的使用工具或方法，不需要访问或修改类的状态。与正常方法的定义差不多。
+调用方式为实例.方法()或类.方法()。
+    @staticmethod
+    def staticmethod(a,b):#静态方法
+        return a+b
+c=gagadenvyou.staticmethod(1,2)#类.方法()调用
+d=obj.staticmethod(1,2)#实例.方法()调用
+备注：类方法和静态方法都需要用装饰器进行定义即在类方法前加上@classmethod 在静态方法前加上@staticmethod
+二、利用f字符串的用法。
+一般语法
+f'xxxx{}xxxx'
+{}中是变量，在运行时可以直接将变量的值插入到字符串中。前面必须加f才能将变量值进行导入。
+a=1
+print(f'a的值为{a}')
+输出结果：
+a的值为1
