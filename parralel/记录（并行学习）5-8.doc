@@ -1,0 +1,28 @@
+第5天
+一.并行和并发概念
+    并发：在一段时间交替去执行多个任务。
+    并行：在一段时间内真正同时一起执行多个任务
+二、进程
+1.一个正在运行的程序就是一个进程。（注：一个程序运行后至少有一个进程。）
+2.python采用multiprogressing模块完成多进程计算。（文件名parralellearn2.py）
+import time 
+import multiprocessing
+def sing(b):
+    for i in range(3):
+        print(f'唱歌with{b}')
+        time.sleep(0.5)
+def dance(name):
+    for i in range(3):
+        print(f'跳舞with{name}')
+        time.sleep(0.5)
+name1='yeye'
+name2='gaga'
+if __name__ == '__main__':
+    time_start=time.time()
+    sing_process=multiprocessing.Process(target=sing,args=('yeye',))#位置参数，按照参数的位置顺序匹配输入参数。
+    dance_process=multiprocessing.Process(target=dance, kwargs={'name':name2})#关键字参数，通过键值对进行输入
+    sing_process.start()
+    dance_process.start()
+    time_end=time.time()
+    print(f'共耗费{time_end-time_start}秒用于计算')
+通过process类创建子进程使用的目标函数（target）,目标函数接收的位置参数(args),目标函数接收的关键字参数(kwargs)。
