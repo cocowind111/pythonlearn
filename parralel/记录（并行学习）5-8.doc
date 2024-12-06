@@ -64,3 +64,31 @@ name1是普通位置参数的输入值。
 备注：也可采用位置参数的方式指定普通参数的输入值。
 比如args=(name1,),kwargs={'name2':'yeye','name3':'yeyedebaby'}
 name1为普通参数，采用位置参数的方式指定
+
+2.python中的子进程和主进程
+正常执行python程序时所占用的进程为主进程。
+通过multiprocessing的process类创建的进程为子进程。
+
+3.multiprocessing模块中process的start方法
+当你调用 start() 时，Python 会在一个新的子进程中执行 run() 方法。start() 方法并不会直接执行任务，
+它只是启动子进程，触发 run() 的执行。
+say_process.start()
+
+4.multiprocessing模块中process的join方法
+阻塞主进程，直到调用join方法的子进程执行完毕，才会继续执行主进程。
+say_process.join()
+
+5.使用多进程的常规流程是：将各进程依次调用start后，再调用jion。而不是start一个进程后立即调用join。
+
+6.multiprocessing模块中process的run方法
+定义子进程启动后执行的代码。
+在创建Process时不指定target，那么执行时没有任何效果。因为默认的run方法是判断如果不指定target，那就什么都不做。
+所以一般直接在实例化process时，指定target，就可以达到run方法的效果。
+say_process.run()
+
+第7天
+1.multiprocessing模块中process的terminate方法
+
+2.multiprocessing模块中process的kill方法
+
+3.pool的使用

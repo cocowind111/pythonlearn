@@ -17,7 +17,11 @@ if __name__ == '__main__':
     saykw_process=multiprocessing.Process(target=saykw,kwargs={'name':'gaga','name2':'yeye','name3':'yeyedebaby'})
     saykw_process2=multiprocessing.Process(target=saykw,args=(name1,),kwargs={'name2':'yeye','name3':'yeyedebaby'})
     say_process.start()
-    saykw_process.start()
     saykw_process2.start()
+    say_process.join()
+
+    saykw_process.start()
+    saykw_process.join()
+
     time_end=time.time()
     print(f'共耗费{time_end-time_start}秒用于计算')
