@@ -20,8 +20,7 @@ if __name__ == '__main__':
     sing_process=multiprocessing.Process(target=sing,args=('yeye',))#位置参数
     dance_process=multiprocessing.Process(target=dance, args=(name2, sex , age))
     # dance_process=multiprocessing.Process(target=dance, kwargs={'name':name2,'sex':sex,'age':age})
-
-    say_process=multiprocessing.Process(target=say,kwargs=(a=1,b=2,c=3,d='dd'))
+    say_process=multiprocessing(target=say,kwargs='turtle')
     sing_process.start()
     dance_process.start()
     say_process.start()

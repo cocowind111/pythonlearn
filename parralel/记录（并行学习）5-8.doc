@@ -26,3 +26,41 @@ if __name__ == '__main__':
     time_end=time.time()
     print(f'共耗费{time_end-time_start}秒用于计算')
 通过process类创建子进程使用的目标函数（target）,目标函数接收的位置参数(args),目标函数接收的关键字参数(kwargs)。
+
+第6天
+1.*args和**kwargs的使用（文件名parralellearn3）
+*args允许函数接收任意数量的位置参数。**kwargs允许函数接受任意数量的关键字参数。
+使用上述两种变量输入功能时，要把普通的位置参数/关键字参数放在*args和**kwargs之前。
+
+import time 
+import multiprocessing
+
+def saykw(name,**kwargs):
+    print(f'我想说的话是{name}')
+    for name1 in kwargs.items():
+        print(f'我想说的话是{name1}')
+def say(name,*args):
+    print(f'我想说的话是{name}')
+    for name1 in args:
+        print(f'我想说的话是{name1}')        
+name1='yeye'
+name2='gaga'
+if __name__ == '__main__':
+    time_start=time.time()
+    say_process=multiprocessing.Process(target=say,args=(name1,name2,name2))
+    saykw_process=multiprocessing.Process(target=saykw,kwargs={'name':'gaga','name2':'yeye','name3':'yeyedebaby'})
+    saykw_process2=multiprocessing.Process(target=saykw,args=(name1,),kwargs={'name2':'yeye','name3':'yeyedebaby'})
+    say_process.start()
+    saykw_process.start()
+    saykw_process2.start()
+    time_end=time.time()
+    print(f'共耗费{time_end-time_start}秒用于计算')
+1.1使用args输入，要用（），并把*args中补充的参数放在普通位置参数后面
+比如args=(name1,name2,name2)
+name1是普通位置参数的输入值。
+1.2使用kwargs输入，要用{}，并把**kwargs中补充的参数放到普通的关键字参数后面。
+比如kwargs={'name':'gaga','name2':'yeye','name3':'yeyedebaby'}
+'name':'gaga'是普通关键字参数的输入
+备注：也可采用位置参数的方式指定普通参数的输入值。
+比如args=(name1,),kwargs={'name2':'yeye','name3':'yeyedebaby'}
+name1为普通参数，采用位置参数的方式指定
