@@ -119,6 +119,7 @@ yeye.baby()
     def __str__(self):#实例方法
         return f"{self.name},{self.age}"
 obj=gagadenvyou('yeyepig','18')#实例.方法()调用
+print(obj.__str__())
 2.类方法：作用于类本身的方法。用@classmethod装饰器进行定义，并且第一个参数是cls，代表调用该方法的类本身。
 调用方式为实例.方法()或类.方法()。
 class gagadenvyou:
