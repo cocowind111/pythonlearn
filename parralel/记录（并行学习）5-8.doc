@@ -121,3 +121,49 @@ if __name__ == "__main__":
 让程序休眠n秒
 
 第8天 进程间通信
+主要介绍PIPE和QUENE两种通信方式
+1.PIPE（管道）两端双向通信
+创建一个管道，通过调用send和recv方法，在管道两端传递信息。（文件名parralellearn7.py）
+def sender(conn):
+    conn.send("Hello from sender")
+    conn.close()
+ 
+def receiver(conn):
+    message = conn.recv()
+    print(f"Received message: {message}")
+    conn.close()
+ 
+if __name__ == "__main__":
+    parent_conn, child_conn = Pipe()
+ 
+    p1 = Process(target=sender, args=(parent_conn,))
+    p2 = Process(target=receiver, args=(child_conn,))
+ 
+    p1.start()
+    p2.start()
+ 
+    p1.join()
+    p2.join()
+quene的数据输入与读取既可以在创建函数时通过send和recv用于对数据的输入和输出，也可直接在main函数中使用send和recv方法
+
+2.QUENE（队列）
+创建一个消息队列，通过put和get方法在不同进程之间传递信息，（文件名parralellearn8.py）
+def sender(queue):
+    queue.put("Hello from sender")
+ 
+def receiver(queue):
+    message = queue.get()
+    print(f"Received message: {message}")
+ 
+if __name__ == "__main__":
+    queue = Queue()
+ 
+    p1 = Process(target=sender, args=(queue,))
+    p2 = Process(target=receiver, args=(queue,))
+ 
+    p1.start()
+    p2.start()
+ 
+    p1.join()
+    p2.join()
+quene的数据输入与读取既可以在创建函数时通过put和get用于对数据的输入和输出，也可直接在main函数中使用put和get方法
